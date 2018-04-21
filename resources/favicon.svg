@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg64"
+   width="156"
+   height="150"
+   viewBox="0 0 156 150"
+   sodipodi:docname="favicon.svg"
+   inkscape:export-filename="/home/juloko/Desktop/favicon.png.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.2pre0 (973e216, 2017-07-25)">
+  <metadata
+     id="metadata70">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs68" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     id="namedview66"
+     showgrid="false"
+     inkscape:zoom="5.74"
+     inkscape:cx="78"
+     inkscape:cy="75"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg64"
+     inkscape:measure-start="56.9686,109.756"
+     inkscape:measure-end="56.446,109.756" />
+  <g
+     id="g84"
+     transform="translate(-2.6132413,-6.2717774)"
+     style="fill:#e91e63;fill-opacity:1"
+     inkscape:export-xdpi="317.89999"
+     inkscape:export-ydpi="317.89999">
+    <rect
+       rx="6.9686413"
+       ry="6.9686413"
+       style="fill:#e91e63;fill-opacity:1;stroke-width:1.69063175"
+       y="63.10017"
+       x="25.945238"
+       height="28.397211"
+       width="102.00349"
+       id="rect76" />
+    <rect
+       transform="rotate(90)"
+       rx="6.9686413"
+       ry="6.9686413"
+       style="fill:#e91e63;fill-opacity:1;stroke-width:1.69063175"
+       y="-91.145592"
+       x="26.297035"
+       height="28.397211"
+       width="102.00349"
+       id="rect80" />
+  </g>
+</svg>
