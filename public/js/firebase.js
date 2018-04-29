@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
-    if (!(document.URL === "http://127.0.0.1:5500/web/index.html")) {
+    if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL === "http://127.0.0.1:5500/public/admin.html")) {
         // Initialize Firebase.
         var config = {
-            apiKey: "AIzaSyCkYehF5D_TWlTEDNnbHNJt0EVKqLO9NUo",
-            authDomain: "brother-bet.firebaseapp.com",
-            databaseURL: "https://brother-bet.firebaseio.com",
-            projectId: "brother-bet",
-            storageBucket: "brother-bet.appspot.com",
-            messagingSenderId: "1004176095521"
+            apiKey: "AIzaSyDRC48HbCC3bc_WovvtuvrbDyjzkkdubjc",
+            authDomain: "seguro-viagens.firebaseapp.com",
+            databaseURL: "https://seguro-viagens.firebaseio.com",
+            projectId: "seguro-viagens",
+            storageBucket: "seguro-viagens.appspot.com",
+            messagingSenderId: "398653166722"
         };
 
         firebase.initializeApp(config);
+
 
         // Shared constants.
         const profilePhoto = document.querySelector(".image");
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const repassText = document.querySelector("#txtRePassword");
         const budgetText = document.querySelector("#txtBudget");
         const enterButton = document.querySelector("#btnEnter");
+        const backButton = document.querySelector("#btnBack");
         const accountButton = document.querySelector("#btnAccount");
         const bugButton = document.querySelector("#btnBug");
         const codeButton = document.querySelector("#btnCode");
@@ -35,58 +36,108 @@ document.addEventListener('DOMContentLoaded', function () {
         const sign_upButton = document.querySelector("#btnSingUp");
         const closeButton = document.querySelector("#btnClose");
         const logoutButton = document.querySelector("#btnLogout");
+        const loginButton = document.querySelector("#btnLogin");
+        const testDataBase = document.querySelector("#testDB");
+        var promoInput = document.querySelector("#promo");
+        var timeInput = document.querySelector("#time");
+        var defaultInput = document.querySelector("#default");
 
         // Shared variables. 
         var email = null;
         var displayName = null;
         var photoURL = null;
         var uid = null;
+        var user = null;
 
         // Control variables;
         var signedout = false;
+        var access_admin = false;
 
         // Firestore variables and constants.
         var firestore = firebase.firestore();
-        const dbUser = firestore.collection("users/");
+        const dbClient = firestore.collection("promotions/");
+        const dbAdmin = firestore.collection("descontos/");
+        const dbTest = firestore.collection("test/");
 
-
+        //Main functions.
 
         // Login functions.
+        if (testDataBase) {
+            testDataBase.addEventListener("click", function () {
+                // Display components.
+                testDB();
+
+            })
+        }
+
+        if (sign_upButton) {
+            sign_upButton.addEventListener("click", function () {
+                // Display components.
+                titleText.innerHTML = "Cadastrar-se";
+                closeButton.style.display = "flex";
+                sign_upButton.style.display = "none";
+                enterButton.innerHTML = "confirmar";
+                var data = {
+                    message: 'test ' + toString(++counter)
+                };
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+
+            })
+        }
 
         if (closeButton) {
             closeButton.addEventListener("click", function () {
                 // Display components.
                 sign_upButton.style.display = "inline-block";
-                titleText.innerHTML = "Sign In";
+                titleText.innerHTML = "Entrar";
                 closeButton.style.display = "none";
-                enterButton.innerHTML = "enter";
+                enterButton.innerHTML = "entrar";
                 loginBox.style.display = "block";
                 reportText.style.display = "none";
             })
         }
 
+        if (logoutButton) {
+            logoutButton.addEventListener("click", function () {
+                logout();
+                window.location.href = '/';
+            })
+        }
+
+        if (backButton) {
+            backButton.addEventListener("click", function () {
+                logout();
+                window.location.href = '/';
+            })
+        }
+
         if (enterButton) {
             enterButton.addEventListener("click", function () {
-                if (titleText.innerHTML === "Sign Up") {
-                    firebase.auth().createUserWithEmailAndPassword(emailText.value, passText.value).then(function () {
-                        // Display components.
-                        closeButton.style.display = "flex";
-                        loginBox.style.display = "none";
-                        reportText.style.display = "block";
-                        console.log("Created account!");
-                        // Handle errors.
-                    }).catch(function (error) {
-                        console.log("Got an error", error);
-                        snackbar(error);
-                    });
-                } else {
-                    firebase.auth().signInWithEmailAndPassword(emailText.value, passText.value).then(function () {
-                        // Handle errors.
-                    }).catch(function (error) {
-                        console.log("Got an error", error);
-                        snackbar(error);
-                    });
-                    signedout = false;
+                if (closeButton) {
+                    if (closeButton.style.display === "flex") {
+                        firebase.auth().createUserWithEmailAndPassword(emailText.value, passText.value).then(function () {
+                            // Display components.
+                            closeButton.style.display = "flex";
+                            loginBox.style.display = "none";
+                            reportText.style.display = "block";
+                            console.log("Created account!");
+                            // Handle errors.
+                        }).catch(function (error) {
+                            console.log("Got an: ", error);
+                            snackbar(error);
+                        });
+                    } else {
+                        firebase.auth().signInWithEmailAndPassword(emailText.value, passText.value).then(function () {
+                            // Handle errors.
+                        }).catch(function (error) {
+                            console.log("Got an: ", error);
+                            snackbar(error);
+                        });
+                        signedout = false;
+                    }
+                }
+                if (document.URL === "https://seguroviagens.online/admin.html") {
+                    changePromo("sulamerica", promoInput.value, timeInput.value, defaultInput.value);
                 }
             })
         }
@@ -120,26 +171,16 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-
-
         if (sendButton) {
             sendButton.addEventListener("click", function () {});
         }
 
         if (logoutButton) {
             logoutButton.addEventListener("click", function () {
-                firebase.auth().signOut().then(function () {
-                    // Handle errors.
-                }).catch(function (error) {
-                    console.log("Sign out error", error);
-                    snackbar(error);
-                });
-
+                logout();
+                signedout = true;
             });
-            signedout = true;
         }
-
-
 
         // Shared functions.
         firebase.auth().onAuthStateChanged(function (user) {
@@ -150,17 +191,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 email = user.email ? user.email : null;
                 photoURL = user.photoURL ? user.photoURL : null;
                 uid = user.uid ? user.uid : null;
-                if ((document.URL === "https://brother-bet.firebaseapp.com/")) {
+                testAuth(uid);
+                if ((document.URL === "https://seguroviagens.online/sign.html")) {
                     // User is signed in.
                     // Reporting status.
                     console.log("Signed in.");
                     // Update the database.
                     createUserDB(email, displayName, photoURL, uid);
                     // Redirect to home.
-                    window.location.href = '/home.html';
+                    testDBAuth();
+                    window.location.href = '/admin.html';
                 }
             } else {
-                if (!(document.URL === "https://brother-bet.firebaseapp.com/")) {
+                if (!(document.URL === "https://seguroviagens.online/sign.html" || document.URL === "https://seguroviagens.online/admin.html")) {
                     // User is signed out.
                     // Nullify shared user variables.
                     displayName = null;
@@ -174,14 +217,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("Signed out.");
                     }
                     // Redirect to login.
-                    window.location.href = '/';
+                    if (!("http://127.0.0.1:5500/public/index.html")) {
+                        window.location.href = '/';
+                    } else {}
                 }
             }
         });
 
         // General functions.
         function createUserDB(_email, _displayName, photoURL, _uid) {
-            dbUser.doc(_email).set({
+            dbClient.doc(_email).set({
                 email: _email,
                 displayName: _displayName,
                 photoURL: "https://",
@@ -190,7 +235,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle errors.
                 console.log("Stored user.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an: ", error);
+            });
+        }
+
+        function logout() {
+            firebase.auth().signOut().then(function () {
+                // Handle errors.
+            }).catch(function (error) {
+                console.log("Sign out error", error);
+                snackbar(error);
             });
         }
 
@@ -232,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle errors.
                 snackbar("Username updated.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an: ", error);
                 snackbar(error);
             });
         }
@@ -245,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle errors.
                 snackbar("Profile photo updated.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an: ", error);
                 snackbar(error);
             });
         }
@@ -256,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle errors.
                 snackbar("Email updated.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an: ", error);
                 snackbar(error);
             });
         }
@@ -267,24 +321,62 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle errors.
                 snackbar("Password updated.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an: ", error);
                 snackbar(error);
             });
         }
 
-        function testDB() {
-            dbUser.doc("Joao").set({
-                displayName: "jhjhjhj",
-                email: "joana@gmail",
-                photoURL: "https://",
-                uid: "kjgjksldfhfkaksdfsd4fga6sfd",
+        function changePromo(_insurer, _promo, _time, _default) {
+            dbClient.doc(_insurer).set({
+                promotion: _promo,
+                time: _time,
+                default: _default,
             }).then(function () {
                 // Handle errors.
                 console.log("Stored user.");
             }).catch(function (error) {
-                console.log("Got an error", error);
+                console.log("Got an:", error);
             });
-            alert(email);
+            testDBAuth();
+        }
+
+        function requestPromo(_insurer) {
+            dbClient.doc(_insurer).get().then(function (doc) {
+                // Handle errors.
+                if (doc && doc.exists) {
+                    const myData = doc.data();
+                    console.log(myData);
+                }
+            }).catch(function (error) {
+                console.log("Got an:", error);
+            });
+            testDBAuth();
+        }
+
+        function testDBAuth() {
+            dbTest.doc("auth").set({
+                auth: "1",
+            }).then(function () {
+                // Handle errors.
+                access_admin = true;
+                console.log("Stored user.");
+                console.log("Access status: ", access_admin);
+            }).catch(function (error) {
+                console.log("Got an: ", error);
+                access_admin = false;
+                console.log("Access status: ", access_admin);
+            });
+        }
+
+        function testAuth(_uid) {
+            if (logoutButton) {
+                if (_uid != null) {
+                    logoutButton.style.display = "block";
+                    loginButton.style.display = "none";
+                } else {
+                    logoutButton.style.display = "none";
+                    loginButton.style.display = "block";
+                }
+            }
         }
     }
-}, false);

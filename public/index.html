@@ -40,6 +40,7 @@
 
         gtag('config', 'UA-117089828-1');
     </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMYXpoyQgantlFgC4et4711ZhxyHTXoM&callback=initMap"></script>
 
 
 </head>
@@ -75,13 +76,16 @@
                         <a href="#home" class="smoothScroll">cotação</a>
                     </li>
                     <li>
-                        <a href="#newsletter" class="smoothScroll telephone">85 9 98614541</a>
+                        <a href="#newsletter" class="smoothScroll valueTelephone2"></a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#modal1">email</a>
+                        <a href="#" data-toggle="modal" data-target="#modal1">contato</a>
                     </li>
-                    <li>
+                    <li id="btnLogin">
                         <a href="sign.html" class="smoothScroll">entrar</a>
+                    </li>
+                    <li id="btnLogout">
+                        <a onclick="logout()" href="#homeland" class="smoothScroll">sair</a>
                     </li>
                 </ul>
             </div>
@@ -89,23 +93,24 @@
         </div>
     </div>
 
-
     <!-- Home Section -->
 
     <section id="home" class="main">
-
-
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
 
+                <div class="wow fadeInUp col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0" data-wow-delay="0.2s">
+                    <img src="images/home-img.png" class="img-responsive" alt="Home">
+                </div>
+
                 <div class="col-md-6 col-sm-7 col-xs-12">
                     <div class="home-thumb">
-                        <!-- <h1 class="wow fadeInUp" data-wow-delay="0.6s">App Starter Page</h1>
-                        <p class="wow fadeInUp" data-wow-delay="0.8s">The optimal way to present your beautiful mobile app for your startup team. Let us create amazing
-                            things!
-                        </p> -->
-                        <a href="#pricing" class="wow fadeInRight section-btn btn  smoothScroll" data-wow-delay="1s">COTAR</a>
+                        <h1 class=" wow fadeInUp" data-wow-delay="0.6s">Você já está na melhor opção de seguros do Brasil.</h1>
+                        <p class="wow text fadeInUp" data-wow-delay="0.8s">Imprevistos podem acontecer, não deixe que estraguem sua viagem. Calcule o preço do seu seguro viagem
+                            e tenha uma viagem tranquila e sem preocupação.
+                            <br>É rapidinho. 😄 </p>
+                        <a href="#pricing" class="wow fadeInUp section-btn btn btn-success smoothScroll" data-wow-delay="1s">ver cotação</a>
                     </div>
                 </div>
 
@@ -135,32 +140,32 @@
                             <h3>bate volta</h3>
                         </div>
                         <p>Sabia que uma internação pode custar mais de 30 mil dólares? </p>
-                        <button class="btn btn-default section-btn">COTAR PARA NOW</button>
+                        <button id="requestPromo()" class=" btn btn-default section-btn ">COTAR PARA NOW</button>
                     </div>
                 </div>
 
-                <div class="wow fadeInDown col-md-4 col-sm-4" data-wow-delay="0.8s">
-                    <div class="pricing-plan">
-                        <div class="pricing-month">
+                <div class="wow fadeInDown col-md-4 col-sm-4 " data-wow-delay="0.8s ">
+                    <div class="pricing-plan ">
+                        <div class="pricing-month ">
                             <h2>Rastreamento de Bagagem</h2>
                         </div>
-                        <div class="pricing-title">
+                        <div class="pricing-title ">
                             <h3>Negócios</h3>
                         </div>
                         <p>Sabia que mais de 24 milhões de malas são extraviadas por ano? </p>
-                        <button class="btn btn-default section-btn">COTAR PARA AGORA</button>
+                        <button class="btn btn-default section-btn ">COTAR PARA AGORA</button>
                     </div>
                 </div>
-                <div class="wow fadeInDown col-md-4 col-sm-4" data-wow-delay="0.8s">
-                    <div class="pricing-plan">
-                        <div class="pricing-month">
+                <div class="wow fadeInDown col-md-4 col-sm-4 " data-wow-delay="0.8s ">
+                    <div class="pricing-plan ">
+                        <div class="pricing-month ">
                             <h2>Urgências Odontológicas</h2>
                         </div>
-                        <div class="pricing-title">
+                        <div class="pricing-title ">
                             <h3>MOCHILÃO</h3>
                         </div>
                         <p>Sabia que um de cada 100 viajantes tem problemas dentários </p>
-                        <button class="btn btn-default section-btn">COTAR PARA JÁ</button>
+                        <button class="btn btn-default section-btn ">COTAR PARA JÁ</button>
                     </div>
                 </div>
 
@@ -187,7 +192,71 @@
     </section>
 
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section 
+    <section id="pricing">
+            <div class="container">
+                <div class="row">
+    
+                    <div class="col-md-12 col-sm-12">
+                        <div class="section-title">
+                            <h1>Preço ?</h1>
+                            <hr>
+                        </div>
+                    </div>
+    
+                    <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.4s">
+                        <div class="pricing-plan">
+                            <div class="pricing-month">
+                                <h2>$60</h2>
+                            </div>
+                            <div class="pricing-title">
+                                <h3>Starter</h3>
+                            </div>
+                            <p>40 Users</p>
+                            <p>10GB per user</p>
+                            <p>Unlimited Support</p>
+                            <p>1 Year License</p>
+                            <button class="btn btn-default section-btn">Register now</button>
+                        </div>
+                    </div>
+    
+                    <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+                        <div class="pricing-plan">
+                            <div class="pricing-month">
+                                <h2>$120</h2>
+                            </div>
+                            <div class="pricing-title">
+                                <h3>Business</h3>
+                            </div>
+                            <p>100 Users</p>
+                            <p>20GB per user</p>
+                            <p>Unlimited Support</p>
+                            <p>2 Years License</p>
+                            <button class="btn btn-default section-btn">Register now</button>
+                        </div>
+                    </div>
+    
+                    <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.8s">
+                        <div class="pricing-plan">
+                            <div class="pricing-month">
+                                <h2>$200</h2>
+                            </div>
+                            <div class="pricing-title">
+                                <h3>Advanced</h3>
+                            </div>
+                            <p>200 Users</p>
+                            <p>30GB per user</p>
+                            <p>Unlimted Support</p>
+                            <p>3 Years License</p>
+                            <button class="btn btn-default section-btn">Register now</button>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </section -->
+
+    <!-- Location Section -->
 
     <section id="pricing">
         <div class="container">
@@ -195,74 +264,21 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h1>Preço ?</h1>
+                        <h1>ONDE NOS ENCONTRAR ?</h1>
                         <hr>
                     </div>
                 </div>
 
-                <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.4s">
-                    <div class="pricing-plan">
-                        <div class="pricing-month">
-                            <h2>$60</h2>
-                        </div>
-                        <div class="pricing-title">
-                            <h3>Starter</h3>
-                        </div>
-                        <p>40 Users</p>
-                        <p>10GB per user</p>
-                        <p>Unlimited Support</p>
-                        <p>1 Year License</p>
-                        <button class="btn btn-default section-btn">Register now</button>
+                <div id='five' class="align-center" style='display: inline'>
+                    <div class="" id="location-card" style="position: absolute; z-index: 20000000">
+                        <h2 id='text-map'>Localização</h2>
+                        <span id='text-map'>Av. Dom José, 2285 <br> Sobral - CE, 62010295</span>
                     </div>
+                    <div id="map" >
                 </div>
-
-                <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
-                    <div class="pricing-plan">
-                        <div class="pricing-month">
-                            <h2>$120</h2>
-                        </div>
-                        <div class="pricing-title">
-                            <h3>Business</h3>
-                        </div>
-                        <p>100 Users</p>
-                        <p>20GB per user</p>
-                        <p>Unlimited Support</p>
-                        <p>2 Years License</p>
-                        <button class="btn btn-default section-btn">Register now</button>
-                    </div>
-                </div>
-
-                <div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.8s">
-                    <div class="pricing-plan">
-                        <div class="pricing-month">
-                            <h2>$200</h2>
-                        </div>
-                        <div class="pricing-title">
-                            <h3>Advanced</h3>
-                        </div>
-                        <p>200 Users</p>
-                        <p>30GB per user</p>
-                        <p>Unlimted Support</p>
-                        <p>3 Years License</p>
-                        <button class="btn btn-default section-btn">Register now</button>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
-
-    <section <section id="pricing" class="services" style='display: inline'>
-        <div class="" id="location-card" style="position: absolute; z-index: 20000000">
-            <!-- <h2 color="black">Localização</h2>
-            <span>Av. Dom José, 2285
-                <br> Sobral - CE, 62010295</span>
-        </div> -->
-            <div id="map">
-
-            </div>
-    </section>
-
 
     <!-- Newsletter Section -->
 
@@ -276,7 +292,7 @@
                         <h2>Que tal falar com a gente no Whatsapp?</h2>
                         <p class="wow fadeInUp" data-wow-delay="0.5s">É rápido, fácil, não te custa nada e vem com emojis inclusos. 😄 Vai lá, a gente tá pronto.</p>
                         <div class="wow fadeInUp newsletter-form" data-wow-delay="0.8s">
-                            <h1>85 9 98614541</h1>
+                            <h1 class="valueTelephone1"></h1>
                         </div>
                     </div>
 
@@ -349,7 +365,10 @@
 
 
     <!-- SCRIPTS -->
-
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+    <script src="js/firebase.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -359,7 +378,8 @@
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/backend.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMYXpoyQgantlFgC4et4711ZhxyHTXoM&callback=initMap"></script>
+    <script src="js/map.js "></script>
+    <script src="https://smtpjs.com/smtp.js "></script>
 </body>
 
 </html>

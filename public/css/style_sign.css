@@ -26,6 +26,11 @@ h4 {
 body {
     background: linear-gradient(30deg, var(--primary_color), var(--primary_color));
     font-size: 48px;
+    overflow: hidden;
+}
+
+span {
+    font-size: 14px;
 }
 
 /* Material */
@@ -72,6 +77,10 @@ body {
     transform: rotate(180deg);
 }
 
+#time.mdl-textfield {
+    padding: 0 !important;
+}
+
 /* Class */
 
 .init-box {
@@ -86,8 +95,8 @@ body {
 .icon {
     position: absolute;
     display: inline-block;
-    top: 10%;
-    width: 15%;
+    top: 5%;
+    width: 13%;
 }
 
 .mdl-button--fab.mdl-button--mini-fab {
@@ -101,7 +110,15 @@ body {
 
 .mdl-button--fab.mdl-button--colored {
     background: white !important;
+    color: var(--secondary_color) !important;
 }
+
+.title-promo {
+    color: var(--secondary_color) !important;
+    font-size: 18px !important;
+}
+
+
 
 /*---------------------------------------
    Mobile Responsive         
@@ -114,11 +131,10 @@ body {
     .icon {
         position: absolute;
         display: inline-block;
-        top: 10%;
-        height: 25%;
-        min-height: 25%;
+        top: 5%;
+        height: 20%;
+        min-height: 20%;
         width: auto;
-        padding-left: 15%;
     }
     .mdl-cell--4-col {
         width: auto !important;
