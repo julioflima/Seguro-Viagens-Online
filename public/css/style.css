@@ -621,6 +621,20 @@ a:focus {
   color: #ffffff;
 }
 
+#btn-back {
+  float: left;
+  padding: 5px 16px !important;
+  margin: 7px;
+  bottom: 0px;
+  position: absolute;
+  background: var(--color-sucess) !important;
+}
+
+#btn-back i {
+  font-size: 36px;
+  font-weight: 900;
+}
+
 /*---------------------------------------
    Footer section              
 -----------------------------------------*/

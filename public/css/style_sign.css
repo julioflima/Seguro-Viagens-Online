@@ -56,7 +56,6 @@ span {
 /* Id */
 
 #init-box-position {
-    width: 80%;
     margin: auto;
 }
 
@@ -96,7 +95,7 @@ span {
     position: absolute;
     display: inline-block;
     top: 5%;
-    width: 13%;
+    width: 10%;
 }
 
 .mdl-button--fab.mdl-button--mini-fab {
@@ -118,7 +117,9 @@ span {
     font-size: 18px !important;
 }
 
-
+.mdl-textfield {
+    padding: 22px 0 !important;
+}
 
 /*---------------------------------------
    Mobile Responsive         
@@ -131,12 +132,14 @@ span {
     .icon {
         position: absolute;
         display: inline-block;
-        top: 5%;
-        height: 20%;
-        min-height: 20%;
+        top: 1%;
+        height: 7%;
         width: auto;
     }
     .mdl-cell--4-col {
         width: auto !important;
+    }
+    .mdl-cell:first-child {
+        display: none !important;
     }
 }
