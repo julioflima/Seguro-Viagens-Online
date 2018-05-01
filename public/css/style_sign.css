@@ -80,6 +80,10 @@ span {
     padding: 0 !important;
 }
 
+#btnSingUp {
+    display: none !important;
+}
+
 /* Class */
 
 .init-box {

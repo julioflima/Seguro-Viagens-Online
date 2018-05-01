@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "seguro-viagens-online",
-    "juloko": "seguro-viagens"
+    "default": "seguro-viagens"
   }
 }

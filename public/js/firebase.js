@@ -127,7 +127,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
         enterButton.addEventListener("click", function () {
             if (closeButton) {
                 if (closeButton.style.display === "flex") {
-                    firebase.auth().createUserWithEmailAndPassword(emailText.value, passText.value).then(function () {
+                    firebase.auth().createUserWithEmailAndPassword(emailText.value.toLowerCase(), passText.value).then(function () {
                         // Display components.
                         closeButton.style.display = "flex";
                         loginBox.style.display = "none";
@@ -139,7 +139,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
                         snackbar(error);
                     });
                 } else {
-                    firebase.auth().signInWithEmailAndPassword(emailText.value, passText.value).then(function () {
+                    firebase.auth().signInWithEmailAndPassword(emailText.value.toLowerCase(), passText.value).then(function () {
                         // Handle errors.
                     }).catch(function (error) {
                         console.log("Got an: ", error);
@@ -170,7 +170,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
     // Home functions.
     if (accountButton) {
         accountButton.addEventListener("click", function () {
-            emailText.value = email;
+            emailText.value.toLowerCase() = email;
             usernameText.value = displayName;
             photoURLText.value = photoURL;
             profilePhoto.style.background = "url('" + photoURL + "')";
@@ -183,7 +183,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
 
     if (updateButton) {
         updateButton.addEventListener("click", function () {
-            updateProfile(emailText.value, usernameText.value, photoURLText.value, passText.value, repassText.value);
+            updateProfile(emailText.value.toLowerCase(), usernameText.value, photoURLText.value, passText.value, repassText.value);
         });
     }
 
