@@ -11,36 +11,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
 
     firebase.initializeApp(config);
 
-    // Shared constants.
-    const profilePhoto = document.querySelector(".image");
-    const loginBox = document.querySelector("#container-box");
-    const enterKey = document.querySelector("#keyEnter");
-    const reportText = document.querySelector("#report");
-    const titleText = document.querySelector("#title");
-    const usernameText = document.querySelector("#txtUsername");
-    const emailText = document.querySelector("#txtEmail");
-    const photoURLText = document.querySelector("#txtphotoURL");
-    const passText = document.querySelector("#txtPassword");
-    const repassText = document.querySelector("#txtRePassword");
-    const budgetText = document.querySelector("#txtBudget");
-    const enterButton = document.querySelector("#btnEnter");
-    const backButton = document.querySelector("#btnBack");
-    const accountButton = document.querySelector("#btnAccount");
-    const bugButton = document.querySelector("#btnBug");
-    const codeButton = document.querySelector("#btnCode");
-    const upButton = document.querySelector("#btnUp");
-    const updateButton = document.querySelector("#btnUpdate");
-    const fireButton = document.querySelector("#btnFire");
-    const sendButton = document.querySelector("#btnSend");
-    const sign_upButton = document.querySelector("#btnSingUp");
-    const closeButton = document.querySelector("#btnClose");
-    const logoutButton = document.querySelector("#btnLogout");
-    const loginButton = document.querySelector("#btnLogin");
-    const testDataBase = document.querySelector("#testDB");
-    var insurerInput = document.querySelector("#insurer");
-    var promoInput = document.querySelector("#promo");
-    var timeInput = document.querySelector("#time");
-    var defaultInput = document.querySelector("#default");
+
 
     // Shared variables. 
     var email = null;
@@ -56,6 +27,7 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
 
     // Firestore variables and constants.
     var firestore = firebase.firestore();
+    var functions = firebase.functions();
     const dbClient = firestore.collection("promotions/");
     const dbAdmin = firestore.collection("descontos/");
     const dbTest = firestore.collection("test/");

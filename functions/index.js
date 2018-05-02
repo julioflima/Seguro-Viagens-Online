@@ -25,10 +25,7 @@ exports.getFuckingPromotion = functions.https.onRequest((req, res) => {
         .then(snapshot => {
             if (doc && doc.exists) {
                 const myData = snapshot.data();
-                res.send(myData);
-                return;
-            } else {
-                throw new Error("Profile doesn't exist")
+                return res.send(myData);
             }
         })
         .catch(error => {

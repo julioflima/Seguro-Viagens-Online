@@ -9,6 +9,8 @@ var minValue = document.querySelector("#valueMinutes");
 var hrValue = document.querySelector("#valueHours");
 var dayValue = document.querySelector("#valueDays");
 
+
+
 // Main
 timeInput.value = 0;
 
