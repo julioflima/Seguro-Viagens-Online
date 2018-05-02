@@ -393,39 +393,43 @@ if (!(document.URL === "http://127.0.0.1:5500/public/sign.html" || document.URL 
     }
 
     function getClientPromotions(_insurer) {
-        dbClient.doc(_insurer).get().then(function (doc) {
-            if (doc && doc.exists) {
-                let myData = doc.data();
+        dbClient.doc(_insurer).get()
+            .then(function (doc) {
+                if (doc && doc.exists) {
+                    let myData = doc.data();
 
-                var session = {
-                    insurer: [],
-                };
-                session.insurer.push({
-                    'promotion': myData.promotion,
-                    'time': myData.time,
-                    'default': myData.default
-                });
+                    var session = {
+                        insurer: [],
+                    };
+                    session.insurer.push({
+                        'promotion': myData.promotion,
+                        'time': myData.time,
+                        'default': myData.default
+                    });
 
-                localStorage.setItem('session', JSON.stringify(session).replace("insurer", _insurer));
-            }
-        }).catch(function (error) {
-            // Show errors.
-            console.log("Got an: ", error);
-        });
+                    localStorage.setItem('session', JSON.stringify(session).replace("insurer", _insurer));
+                }
+            })
+            .catch(function (error) {
+                // Show errors.
+                console.log("Got an: ", error);
+            });
     }
 
     function getAdminPromotions(_insurer, _promo, _default) {
-        dbAdmin.doc(_insurer).get().then(function (doc) {
-            if (doc && doc.exists) {
-                let myData = doc.data();
-                links = new Array(myData[_promo], );
-                changePromo(insurerInput.value.toLowerCase(), myData[_promo], timeInput.value, myData[_default]);
-                snackbar("Mudanças feitas.");
-            }
-        }).catch(function (error) {
-            // Show errors.
-            console.log("Got an: ", error);
-        });
+        dbAdmin.doc(_insurer).get()
+            .then(function (doc) {
+                if (doc && doc.exists) {
+                    let myData = doc.data();
+                    links = new Array(myData[_promo], );
+                    changePromo(insurerInput.value.toLowerCase(), myData[_promo], timeInput.value, myData[_default]);
+                    snackbar("Mudanças feitas.");
+                }
+            })
+            .catch(function (error) {
+                // Show errors.
+                console.log("Got an: ", error);
+            });
     }
 
     getRealtimeUpdates = function () {

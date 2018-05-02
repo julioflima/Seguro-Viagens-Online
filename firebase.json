@@ -5,7 +5,10 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [ {
+      "source": "/bigben", "function": "bigben"
+    } ]
   },
   "firestore": {
     "rules": "firestore.rules",
